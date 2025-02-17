@@ -1,0 +1,113 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+.form-card {
+  padding: 30px;
+  border-radius: 10px;
+  background: #f7f7f7;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.row {
+  display: grid;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.name {
+  margin: auto;
+}
+
+.input {
+  height: 32px;
+  width: 100%;
+}
+
+.input-number-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.input-number-container input {
+  height: 32px;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.input-checkbox {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form {
+  width: 600px;
+}
+
+.container-choices-types {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.container-choices-types button {
+    margin: 5px;
+}
+
+.number-input-icon {
+  position: absolute;
+  right: 28px;
+  z-index: 1;
+  font-size: 24px;
+  color: grey;
+  font-weight: bolder;
+  top: 28px;
+  cursor: pointer;
+}
+
+.number-input-icon:hover {
+  color: red;
+}
+
+.add {
+  right: 28px;
+}
+
+.remove {
+  left: 28px;
+}
+
+.input-number-container {
+  position: relative;
+}
+
+.input-number-container mat-form-field {
+  width: 100%;
+}
+
+.types-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+}

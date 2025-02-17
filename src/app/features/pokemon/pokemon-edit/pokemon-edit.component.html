@@ -1,0 +1,148 @@
+<div class="container">
+  <div class="">
+    <img
+      [src]="pokemon().picture"
+      class=""
+      [alt]="pokemon().name"
+    />
+  </div>
+  <div class="">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="form-card">
+        <h2 class="">{{ pokemon().name }}</h2>
+        <div class="form-container">
+          <div class="row">
+            <mat-form-field>
+              <mat-label>Nom</mat-label>
+              <input
+                formControlName="name"
+                matInput
+                type="text"
+                class="input"
+                placeholder="Ex. Pikachu"
+                [errorStateMatcher]="getErrorStateMatcher('name')"
+                (blur)="onBlur('name')"/>
+              <mat-error>{{ getErrorMessage('name') }}</mat-error>
+            </mat-form-field>
+
+          </div>
+
+          <div class="row">
+            <div>
+              <div class="input-number-container">
+                <mat-icon (click)="decrementLife(pokemonLife, 'MIN_LIFE')" class="number-input-icon remove">remove</mat-icon>
+                <mat-form-field>
+                  <mat-label>Points de vie</mat-label>
+                  <input
+                    matInput
+                    formControlName="life"
+                    type="number"
+                    [errorStateMatcher]="getErrorStateMatcher('life')"
+                    (blur)="onBlur('life')"
+                    readonly
+                  />
+                  <mat-error>{{ getErrorMessage('life') }}</mat-error>
+                </mat-form-field>
+                <mat-icon (click)="incrementLife(pokemonLife, 'MAX_LIFE')" class="number-input-icon add">add</mat-icon>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <div class="input-number-container">
+                <mat-icon (click)="decrementLife(pokemonDamage, 'MIN_DAMAGE')" class="number-input-icon remove">remove</mat-icon>
+                <mat-form-field>
+                  <mat-label>Dégâts</mat-label>
+                  <input
+                    matInput
+                    readonly
+                    formControlName="damage"
+                    type="number"
+                    [errorStateMatcher]="getErrorStateMatcher('damage')"
+                    (blur)="onBlur('damage')"/>
+                  <mat-error>{{ getErrorMessage('damage') }}</mat-error>
+                </mat-form-field>
+                <mat-icon (click)="incrementLife(pokemonDamage, 'MAX_DAMAGE')" class="number-input-icon add">add</mat-icon>
+              </div>
+            </div>
+          </div>
+          <!--          <div><p>Types</p></div>-->
+          <!--          <div class="input-checkbox">-->
+
+          <div class="container-choices-types">
+            <mat-label>Types</mat-label>
+            <div>
+              @for(type of pokemonTypeList.controls; track type; let index = $index) {
+              <button
+              mat-raised-button
+              [style.color]="type.value === 'Electrik' ? 'black' : 'white'"
+                [style.backgroundColor]="getColor(type.value)"
+                (click)="pokemonTypeList.removeAt(index)">
+              {{ type.value }} <span class="badge">x</span>
+               </button>
+              }
+            </div>
+
+            <div class="types-list">
+              @for(type of pokemonService.getPokemonTypeList(); track
+              type) {
+              <p>
+                <mat-checkbox
+                #checkbox
+                  [checked]="isPokemonTypeSelected(type)"
+                  (change)="onPokemonTypeChange(type, checkbox.checked)"
+                  class="form-check-input"
+                  type="checkbox"
+                  [value]="type"
+                  [id]="type"
+                >
+              {{ type }}
+              </mat-checkbox>
+
+        </p>
+              }
+            </div>
+          </div>
+        </div>
+
+        <!--            <div class="row">-->
+        <!--              @for(type of pokemonService.getPokemonTypeList(); track-->
+        <!--              type) {-->
+        <!--                <div>-->
+        <!--                  <input-->
+        <!--                  #checkbox-->
+        <!--                    [checked]="isPokemonTypeSelected(type)"-->
+        <!--                    (change)="onPokemonTypeChange(type, checkbox.checked)"-->
+        <!--                    class="form-check-input"-->
+        <!--                    type="checkbox"-->
+        <!--                    [value]="type"-->
+        <!--                    [id]="type"-->
+        <!--                  />-->
+        <!--                  <label [for]="type">-->
+        <!--              {{ type }}-->
+        <!--              </label>-->
+        <!--          </div>-->
+        <!--              }-->
+        <!--            </div>-->
+
+        <!--            <div>-->
+
+
+        <div class="buttons-container">
+          <button
+            mat-button
+            [routerLink]="['/pokemons', pokemon().id]">
+            RETOUR
+          </button>
+          <button
+            mat-button
+            [disabled]="form.invalid"
+            type="submit">
+            SAUVEGARDER LES CHANGEMENTS
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

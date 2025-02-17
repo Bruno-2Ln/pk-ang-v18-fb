@@ -1,0 +1,45 @@
+<div class="profile-container">
+  <img mat-card-xl-image [src]="pokemon().picture" [alt]="pokemon().name" />
+  <div class="infos">
+    <h3>{{pokemon().name}}</h3>
+    <div class="characteristics">
+      <div class="row">
+        <div><p>Points de vie</p></div>
+        <div><p>{{pokemon().life}}</p></div>
+      </div>
+
+      <div class="row">
+        <div><p>Dégâts</p></div>
+        <div><p>{{pokemon().damage}}</p></div>
+      </div>
+
+      <div class="row">
+        <div><p>Types</p></div>
+        <div><p>
+        @for(type of pokemon().types; track type; let last = $last) {
+        {{type}}
+          @if (!last) {
+          <span>-</span>
+    }
+      }
+        </p>
+          </div>
+     </div>
+
+     <div class="row">
+       <div><p>Date de création</p></div>
+       <div><p>{{pokemon().created | date: 'dd/MM/YYYY'}}</p></div>
+     </div>
+
+   </div>
+   <div class="buttons">
+     <button mat-button>RETOUR</button>
+     <button
+       mat-button
+       [routerLink]="['/pokemons/edit', pokemon().id]">
+       ÉDITER
+     </button>
+     <button mat-button>SUPPRIMER</button>
+   </div>
+ </div>
+</div>

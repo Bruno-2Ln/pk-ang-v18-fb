@@ -1,0 +1,35 @@
+.pokemons-list-container {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+mat-card {
+  cursor: pointer;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  justify-items: end;
+  width: 80%;
+}
+
+.text_points-of-life {
+  white-space: nowrap;
+}
+
+.mat-mdc-card-header {
+  flex-direction: column;
+}
+
+p.card-text {
+  font-size: 12px;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  margin-block: 30px;
+}

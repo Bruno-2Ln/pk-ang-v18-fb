@@ -1,0 +1,50 @@
+.profile-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  border: 1px #dfdfdf solid;
+  border-radius: 10px;
+  width: 80vw;
+  margin-inline: auto;
+  margin-top: 20px;
+  background: #f6f6f6;
+}
+
+img {
+  margin: auto;
+}
+
+
+.infos {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 4fr 1fr;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  align-items: center;
+}
+
+.characteristics {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.characteristics .row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  border-bottom: 1px solid #f6f6f6;
+}
+
+.characteristics div :not(.row) {
+  display: flex;
+  align-items: center;
+}

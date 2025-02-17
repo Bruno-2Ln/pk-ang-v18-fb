@@ -1,0 +1,50 @@
+<!--<h1>{{title}}</h1>-->
+
+<form class="search-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>Rechercher un Pokémon</mat-label>
+    <input
+      matInput
+      placeholder="Ex. Pikachu"
+      name="searchterm"
+      #searchField
+      [value]="searchTerm()"
+      (input)="searchTerm.set(searchField.value)">
+  </mat-form-field>
+</form>
+
+<div class="pokemons-list-container">
+  @for (p of pokemonsResults(); track p.name) {
+
+  <!--  <h2>{{ p.name }}</h2>-->
+<!--  <p>Taille: {{setSize(p)}}</p>-->
+<!--  <img [src]="p.picture" [alt]="p.name" />-->
+<!--  <p>Points de vie : {{ p.life }}</p>-->
+<!--  <button (click)="incrementLife(p)" [disabled]="p.life >= 30">-->
+<!--  +-->
+<!--  </button>-->
+<!--  <button (click)="decrementLife(p)" [disabled]="p.life <= 10">-->
+<!--  - -->
+<!--  </button>-->
+<div class="pokemon-card">
+<mat-card [routerLink]="['/pokemons', p.id]" appearance="outlined" appCardColorBorder [type]="p.types[0]">
+  <mat-card-header>
+   <mat-card-title>{{p.name}}</mat-card-title>
+   <mat-card-subtitle>Taille: {{setSize(p)}}</mat-card-subtitle>
+    <p class="card-text">{{ p.created | date: 'dd/MM/YYYY' }}</p>
+  </mat-card-header>
+  <mat-card-content>
+    <img mat-card-xl-image [src]="p.picture" [alt]="p.name" />
+
+    <div class="stats">
+     <p class="text_points-of-life">Points de vie :</p>
+     <p> {{ p.life }}</p>
+       <p class="text_points-of-life">Dégâts :</p>
+       <p> {{ p.damage }}</p>
+    </div>
+   </mat-card-content>
+ </mat-card>
+ </div>
+  }
+</div>
+
